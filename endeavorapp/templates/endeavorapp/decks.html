@@ -1,0 +1,30 @@
+{% extends 'endeavorapp/main.html' %}
+
+{% block content %}
+<!-- TODO: deck hierarchy -->
+<h1>Decks</h1>
+<div>
+    {% for deck in decks %}
+    <h2>{{deck.id}} -- <a href="/decks/{{deck.id}}/cards">{{deck.name}}</a></h2>
+    {% endfor %}
+</div>
+
+<button onclick="creatDeck()">Add Deck</button>
+
+<script>
+    function creatDeck() {
+        document.getElementById("bg-modal").innerHTML =
+            `<div id="modal-content">
+                <form action="/decks/create/" method="post">
+                    {% csrf_token %}
+                    <p>Please enter the deck's name.</p>
+                    <input name="name" type="text" placeholder="Name">
+                    <button type="submit" onclick="closeModal()">Create</button>
+                </form>
+            </div>`
+        document.getElementById("bg-modal").style.display = 'flex';
+    }
+
+    let closeModal = () => document.getElementById("bg-modal").style.display = 'none';
+</script>
+{% endblock %}

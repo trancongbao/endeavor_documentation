@@ -1,0 +1,36 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Endeavor</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+</head>
+
+<body>
+    <div id="container">
+        <div id="navbar">{% include 'endeavorapp/navbar.html' %}</div>
+        <div id="main">
+            <div id="main-left-padding"></div>
+            <div id="main-child-content">{% block content %}{% endblock %}</div>
+            <!-- <div id="right-side-bar">right-side-bar</div> -->
+            <div id="main-right-padding"></div>
+        </div>
+        <div id="footer">{% include 'endeavorapp/footer.html' %}</div>
+    </div>
+
+    <div id="bg-modal" style="display:none"></div>
+</body>
+
+<script>
+    const scheme = 'http'
+    const host = '127.0.0.1'
+    const port = '8000'
+</script>
+
+</html>
